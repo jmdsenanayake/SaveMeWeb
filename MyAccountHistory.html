@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<title>SaveMe</title>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/w3.css">
+<link rel="stylesheet" href="css/notifications.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
+.w3-row-padding img {margin-bottom: 12px}
+/* Set the width of the sidebar to 120px */
+.w3-sidebar {width: 120px;background: #222;}
+/* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+#main {margin-left: 120px}
+/* Remove margins from "page content" on small screens */
+@media only screen and (max-width: 600px) {#main {margin-left: 0}}
+    #rightpic {
+background-position: top right;
+height : 133px;
+padding : 0;
+width: 138px;
+float: right;
+
+}
+  
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+    width:100%
+}
+    
+
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: darkblue;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 50%;
+    text-align:center;
+    border-radius: 8px;
+    
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
+
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+
+img.avatar {
+    width: 20%;
+    border-radius: 30%;
+}
+
+.container {
+    padding: 16px;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+       display: block;
+       float: none;
+    }
+    .cancelbtn {
+       width: 100%;
+    }
+}
+ 
+    
+table {
+    border-collapse: collapse;
+    width: 100%;
+    border-collapse: collapse;
+    color: white;
+    
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    
+}
+    
+    th{
+        background-color:grey;
+    }
+
+</style>
+<body class="w3-black">
+
+<!-- Icon Bar (Sidebar - hidden on small screens) -->
+<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+  <!-- Avatar image in top left corner -->
+  
+
+  <a href="MyAccountHome.php" class="w3-bar-item w3-button w3-padding-large w3-black">
+    
+      
+    <p>Home</p>
+  </a>
+    
+    
+    <a href="MyAccountNotifications.html" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+     <img src="images/noti.png" style="width:100%">
+      <br><br>
+    <p>Notifiactions</p>
+  </a>
+  <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    
+    <p>History</p>
+  </a>
+  <a href="MyAccountReports.html" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    
+    <p>Generate Reports</p>
+  </a>
+  <a href="Admin.html" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    
+    <p>Update Account</p>
+  </a>
+  
+</nav>
+
+
+
+
+
+  <!-- Contact Section -->
+  <div class="w3-padding-16 w3-content w3-text-grey" id="contact">
+       <span></span>
+      <div class="row">
+          
+        <div class="col-sm-8">
+            <br><br>
+            <h2 class="w3-text-light-grey">General Hospital - Colombo</h2>
+            <h4> Accidents History </h4>
+        </div>
+       
+        <div class="col-sm-4">
+           <img id="rightpic" src="images/save.png"> 
+        </div>    
+      </div>
+   <div class="row"> 
+    <div class="col-sm-12">
+    <hr>
+    </div>
+    </div>
+      
+      <form>
+          <table>
+              <tr>
+                  <td>Accident Type</td>
+                  <td>
+                      <select>
+                          <option value="road">Road Accidents</option>
+                          <option value="domestic">Domestic Accidents</option>
+                      </select>
+                  </td>
+                  <td><input type="submit" value="Find" ></td>
+              </tr>
+          </table>
+      </form>
+      
+      <table>
+  <tr>
+    <th>Date</th>
+    <th>Place</th>
+    <th>Time</th>
+    <th>Status</th>
+    <th>Description</th>
+  </tr>
+  <tr data-href="MyAccountNotificationDetails">
+    <td>18.04.2017</td>
+    <td>Kadawatha</td>
+    <td>8.00 am</td>
+    <td>Fatal</td>
+    <td>Bike and a lorry, 3 people injured</td>
+  </tr>
+  <tr>
+    <td>17.04.2017</td>
+    <td>Borella</td>
+    <td>11.50 pm</td>
+    <td>Normal</td>
+    <td>Bike and a lorry, 3 people injured</td>
+  </tr>
+  <tr>
+    <td>17.04.2017</td>
+    <td>Kiribathgoda</td>
+    <td>10.42 pm</td>
+    <td>Normal</td>
+    <td>Bike and a lorry, 3 people injured</td>
+  </tr>
+  <tr>
+    <td>15.04.2017</td>
+    <td>Colombo 10</td>
+    <td>7.28 am</td>
+    <td>Normal</td>
+    <td>Bike and a lorry, 3 people injured</td>
+  </tr>
+         
+<tr>
+    <td>14.04.2017</td>
+    <td>Colombo 04</td>
+    <td>9.30 am</td>
+    <td>Fatal</td>
+    <td>Bike and a lorry, 3 people injured</td>
+  </tr>
+         
+<tr>
+    <td>10.04.2017</td>
+    <td>Dematagoda</td>
+    <td>7.20 am</td>
+    <td>Normal</td>
+    <td>Bike and a lorry, 3 people injured</td>
+  </tr>
+         
+<tr>
+    <td colspan="5"><center><i class="fa fa-angle-double-down" style="font-size:24px"></i></center></td>
+</tr>
+</table>
+    
+  </div>
+    
+    <!-- End Contact Section -->
+
+    <!-- Footer -->
+  
+
+
+
+</body>
+</html>

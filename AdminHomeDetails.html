@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<title>SaveMe</title>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/w3.css">
+<link rel="stylesheet" href="css/notifications.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
+.w3-row-padding img {margin-bottom: 12px}
+/* Set the width of the sidebar to 120px */
+.w3-sidebar {width: 120px;background: #222;}
+/* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+#main {margin-left: 120px}
+/* Remove margins from "page content" on small screens */
+@media only screen and (max-width: 600px) {#main {margin-left: 0}}
+    #rightpic {
+background-position: top right;
+height : 133px;
+padding : 0;
+width: 138px;
+float: right;
+
+}
+  
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+    width:100%
+}
+    
+table {
+    border-collapse: collapse;
+    width: 100%;
+    border-collapse: collapse;
+    color: white;
+    
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    
+}
+    
+    th{
+        background-color:grey;
+    }
+
+tr:hover{background-color:darkgrey;
+    cursor:pointer;}
+</style>
+<body class="w3-black" onload="loadDetails()">
+
+<!-- Icon Bar (Sidebar - hidden on small screens) -->
+<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+  <!-- Avatar image in top left corner -->
+  
+
+  <a href="MyAccountHome.html" class="w3-bar-item w3-button w3-padding-large w3-black">
+    
+      
+    <p>Home</p>
+  </a>
+    
+    
+    <a href="" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+     <img src="images/noti.png" style="width:100%">
+      <br><br>
+    <p>Requests</p>
+  </a>
+  <a href="AdminHomeDetails.html" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    
+    <p>History</p>
+  </a>
+  <a href="MyAccountReports.html" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    
+    <p>Generate Reports</p>
+  </a>
+  <a href="Admin.html" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    
+    <p>Update Account</p>
+  </a>
+  
+</nav>
+
+
+
+
+
+  <!-- Contact Section -->
+  <div class="w3-padding-16 w3-content w3-text-grey" id="contact">
+       <span></span>
+      <div class="row">
+          
+        <div class="col-sm-8">
+            <br><br>
+            <h2 class="w3-text-light-grey">Admin</h2>
+            <h4>Requests</h4>
+        </div>
+       
+        <div class="col-sm-4">
+           <img id="rightpic" src="images/save.png"> 
+        </div>    
+      </div>
+   <div class="row"> 
+    <div class="col-sm-12">
+    <hr>
+    </div>
+    </div>
+      
+      <div>
+          <select id="type" onchange="loadDetails()">
+            <option value="Hospitals">Hospitals</option>
+            <option value="Police Stations">Police Stations</option>
+            <option value="Fire Brigades">Fire Brigades</option>
+          </select>
+          <br><br>
+      </div>
+      
+   <div id="info">
+    </div>      
+    <!--<script>
+        $('tr[data-href]').on("click", function() {
+        document.location = $(this).data('href');
+        });
+    </script>-->
+    
+  </div>
+<script>
+    
+    function loadDetails(){
+        var e = document.getElementById("type");
+        var strUser = e.options[e.selectedIndex].text;
+        
+        if(strUser=="Hospitals"){
+            showDetails();
+        }
+        else if(strUser=="Police Stations"){
+            detailsOnPolice();
+        }
+        else if(strUser=="Fire Brigades"){
+            detailsOnFirebrigde();
+        }
+        console.log("hi")
+       setTimeout(arguments.callee,1000);
+    }
+    
+    
+    function showDetails() {
+    
+    var xmlhttp=new XMLHttpRequest();
+   
+    xmlhttp.onreadystatechange=function() {
+        if (this.readyState==4 && this.status==200) {
+		  //console.log(this.responseText);
+        document.getElementById("info").innerHTML=this.responseText;
+        }
+    }
+        xmlhttp.open("GET","AdminGetDetails.php",true);
+        xmlhttp.send();
+        
+    }
+    
+    
+    function detailsOnPolice(){
+        var xmlhttp=new XMLHttpRequest();
+   
+    xmlhttp.onreadystatechange=function() {
+        if (this.readyState==4 && this.status==200) {
+		  //console.log(this.responseText);
+        document.getElementById("info").innerHTML=this.responseText;
+        }
+    }
+        xmlhttp.open("GET","AdminGetDetailsOnPolice.php",true);
+        xmlhttp.send();
+        
+    }
+    
+    function detailsOnFirebrigde(){
+        var xmlhttp=new XMLHttpRequest();
+   
+    xmlhttp.onreadystatechange=function() {
+        if (this.readyState==4 && this.status==200) {
+		  //console.log(this.responseText);
+        document.getElementById("info").innerHTML=this.responseText;
+        }
+    }
+        xmlhttp.open("GET","AdminGetDetailsOnFirebrigade.php",true);
+        xmlhttp.send();
+        
+    }
+    
+     function sendMail(name,email) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    alert("Request Confirmed")
+                    console.log(document.getElementById("type").value);
+                    updateTable(document.getElementById("type").value,name,email);
+                }
+            };
+            xhttp.open("GET", "sendMail.php?email="+email+"&name="+name, false);
+            xhttp.send();
+        }
+    
+    function updateTable(type,name,email){
+        var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    //alert("Request Confirmed")
+                }
+            };
+            xhttp.open("GET", "UpdateTableStatus.php?type="+type+"&name="+name+"&email="+email, false);
+            xhttp.send();
+    }
+	
+	/*
+	function createAccounts(type,name,email){
+        var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    //alert("Request Confirmed")
+                }
+            };
+            xhttp.open("GET", "UpdateTableStatus.php?type="+type+"&name="+name+"&email="+email, false);
+            xhttp.send();
+    }*/
+    
+    </script>>
+    
+    <!-- End Contact Section -->
+
+    <!-- Footer -->
+  
+
+
+
+</body>
+</html>
